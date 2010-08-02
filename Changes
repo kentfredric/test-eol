@@ -1,5 +1,11 @@
 Revision history for Test-EOL
 
+    - More self explanitory output. ( Kent Fredric )
+    - Improved parameter handling, including now an actually working
+      all_reasons flag. ( Kent Fredric )
+    - Clarified/Added documentation of OPTIONS, Output, and
+      all_reasons (Kent Fredric)
+
 0.9  2010-06-16
      - Fix warnings on very old perls (paul@city-fan.org)
        (Closes: RT#58442)

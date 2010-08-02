@@ -264,6 +264,11 @@ Identified characters are:
 
 =back
 
+=head2 Output Too Noisy?
+
+If you find you have a file with I<loads> of failures, and its too hard to find the topmost one and fix it first,
+you can disable the diagnostic "Problem Lines" printing by passing C<< all_reasons => 0 >> in the parameter hash.
+
 =head1 ACKNOWLEDGEMENTS
 
 Shamelessly ripped off from L<Test::NoTabs>.

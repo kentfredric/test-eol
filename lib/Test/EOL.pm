@@ -243,6 +243,26 @@ the total number of files tested must be specified.
 Run a unix EOL check on C<$file>. For a module, the path (lib/My/Module.pm) or the
 name (My::Module) can be both used.
 
+=head1 UNDERSTANDING OUTPUT
+
+At present, output is formatted in a way to try be the least ambiguous as possible as to what is the problem.
+
+    Failed test 'No windows line endings in '/some/file/path/Foo.pm' on line 123 : problem => q{[\s][\s][\s][\s]}
+
+In this example, the problem is that it found 4 literal space characters at the right of the line. ( C<<  { trailing_whitespace => 1 } >> ).
+
+Identified characters are:
+
+=over 4
+
+=item * C<[\r]> : Carriage Return code ( often found in windows new-lines )
+
+=item * C<[\s]> : Literal spaces.
+
+=item * C<[\t]> : Literal tabs.
+
+=back
+
 =head1 ACKNOWLEDGEMENTS
 
 Shamelessly ripped off from L<Test::NoTabs>.

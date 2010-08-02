@@ -92,8 +92,9 @@ sub eol_unix_ok {
     my $options = shift if ref $_[0] eq 'HASH';
     $options ||= {
         trailing_whitespace => 0,
-        all_reasons => 0,
+        all_reasons => 1,
     };
+    $options->{all_reasons} = 1 if not exists $options->{all_reasons};
     $file = _module_to_path($file);
 
     open my $fh, $file or do { $Test->ok(0, $test_txt); $Test->diag("Could not open $file: $!"); return; };
@@ -117,7 +118,7 @@ sub eol_unix_ok {
     }
     if( @fails ){
        $Test->ok( 0, $test_txt . " on "  . _debug_line({ show_lines => 0 } , $fails[0]  )  );
-       if ( $options->{all_reasons} || 1 ){
+       if ( $options->{all_reasons} ){
           $Test->diag( "  Problem Lines: ");
           for ( @fails ){
             $Test->diag(_debug_line({ show_lines => 1 } , $_ ) );

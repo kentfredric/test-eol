@@ -237,10 +237,30 @@ If the test plan is defined:
 
 the total number of files tested must be specified.
 
+See </OPTIONS> for more details.
+
 =func eol_unix_ok( $file [, $text] [, \%options ]  )
 
 Run a unix EOL check on C<$file>. For a module, the path (lib/My/Module.pm) or the
 name (My::Module) can be both used.
+
+See </OPTIONS> for more details.
+
+=head1 OPTIONS
+
+=head2 C<trailing_whitespace>
+
+When set to a true value, considers any sequence of whitespace at the tail of a line as an error also.
+
+    qq{\s\s\s\s\n}  # Fail with trailing_whitespace => 1
+
+Defaults to false.
+
+=head2 C<all_reasons>
+
+When set to a true value, Print out every line that has an error with the error displayed.
+
+Defaults to true.
 
 =head1 UNDERSTANDING OUTPUT
 

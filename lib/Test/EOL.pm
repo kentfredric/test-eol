@@ -90,10 +90,8 @@ sub eol_unix_ok {
     $test_txt   = shift if !ref $_[0];
     $test_txt ||= "No windows line endings in '$file'";
     my $options = shift if ref $_[0] eq 'HASH';
-    $options ||= {
-        trailing_whitespace => 0,
-        all_reasons => 1,
-    };
+    $options ||= {};
+    $options->{trailing_whitespace} = 0 if not exists $options->{trailing_whitespace};
     $options->{all_reasons} = 1 if not exists $options->{all_reasons};
     $file = _module_to_path($file);
 
